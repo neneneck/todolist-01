@@ -1,13 +1,276 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 전체 문서에서 스크롤바를 얇게 만들기 */
+::-webkit-scrollbar {
+  width: 8px; /* 세로 스크롤바의 두께 */
+  height: 8px; /* 가로 스크롤바의 두께 */ 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 스크롤바 트랙(배경) 스타일 */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* 트랙의 배경색 */
+}
+
+/* 스크롤바 핸들(사용자가 드래그하는 부분) 스타일 */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* 핸들의 배경색 */
+  border-radius: 10px; /* 핸들의 둥근 모서리 */
+  border: 2px solid #f1f1f1; /* 핸들의 테두리 */
+}
+
+/* 핸들이 호버 상태일 때 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* 핸들 호버 시 색상 */
+}
+
+
+/*to do list 스타일 start-----*/
+
+/*폰트*/
+@import url('https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+
+:root{
+  --font-wt: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-pr: 'Pretendard Variable', sans-serif;
+}
+
+.none{
+  display: none;
+}
+
+.ab{
+  position: absolute;
+}
+
+.ab_cen{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+i{
+  font-style: inherit;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+body{
+  background: #d1d6e8;
+  font-family: var(--font-pr);
+}
+
+.App {
+  background: #fff;
+  max-width: 380px;
+  height: 700px;
+  overflow-x: hidden;
+  margin: 0 auto;
+  width: 92%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 65px 30px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  border: 11px solid #111;
+}
+
+.App h1 {
+  font-size: 1.65rem;
+}
+
+.App .inputList {
+  width: 85%;
+  height: 40px;
+  margin-top: 10px;
+  /* padding: 0 10px; */
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid #e7eaf6;
+  color: #333;
+  font-size: .85rem;
+}
+
+.App .addBtn {
+  font-size: 28px;
+  width: 15%;
+  height: 40px;
+  float: right;
+  max-width: 40px;
+  margin-top: 10px;
+  font-weight: 300;
+  font-family: var(--font-pr);
+  box-sizing: border-box;
+  display: inline-block;
+  line-height: 1;
+  background: #5b79e4;
+  color: #fff;
+}
+
+.ip_address{
+  background: #f3f3f3;
+  color: #c8c8c8;
+  padding: 7px 0;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  margin: 0 auto;
+}
+
+.ip_address p{
+  margin: 0;
+}
+
+.App ul.listAll {
+  padding: 10% 0%;
+  /* height: 290px; */
+  /* overflow-y: scroll; */
+}
+
+.App ul.listAll li{
+  position: relative;
+  padding-left: 33px;
+  font-size: 1rem;
+  padding-right: 55px;
+  color: #3c3c3c;
+  letter-spacing: -0.5px;
+  border-bottom: 1px solid #e7eaf6;
+  padding-bottom: 1px;
+  padding-top: 20px;
+  line-height: 1.5;
+  min-height: 40px;
+  box-sizing: border-box;
+  padding-bottom: 17px;
+}
+
+.App ul.listAll li .checkIcon {
+  position: absolute;
+  top: 13px;
+  left: 3px;
+  width: 17px;
+  z-index: 10;
+}
+
+.App ul.listAll li .checkIcon:after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.App ul.listAll li .subtractBtn {
+  font-size: 1.4rem;
+  background: #e9eeff;
+  width: 15%;
+  height: 40px;
+  max-width: 40px;
+  font-weight: 300;
+  font-family: var(--font-pr);
+  color: #000000;
+  box-sizing: border-box;
+  display: inline-block;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+/* 기본 체크박스 숨기기 */
+.custom-checkbox {
+  opacity: 0;
+}
+
+/* 체크박스 박스 */
+.checkmark {
+  width: 19px;
+  height: 19px;
+  background: #f3f3f3;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  top: 21px;
+  left: 0;
+}
+
+/* 체크 시 상태 변화 */
+/* .custom-checkbox:checked + .checkmark {
+  background: #34c759;
+  border-color: #34c759;
+} */
+
+/* 체크 표시 추가 */
+.custom-checkbox:checked + .checkmark::after {
+  content: "✅";
+  color: white;
+  font-size: 22px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dateCheck{
+  display: block;
+  margin: 15px 0 30px;
+  font-family: var(--font-pr);
+  font-size: 1.1rem;
+  color: #3c3c3c;
+  letter-spacing: -0.5px;
+  /* position: relative; */
+}
+/* 
+.dateCheck:before{
+  content: '🗓️';
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+} */
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+} */
+
+/*to do list 스타일 end-------*/
+
+@media (max-width: 1024px){
+  .App {
+    /* background: #fff;
+    max-width: 380px;
+    height: 700px;
+    overflow-x: hidden;
+    margin: 0 auto;
+    width: 92%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 65px 30px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3); */
+    border-radius: 0;
+    border: 0;
+  }
 }
