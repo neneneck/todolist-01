@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState({});
   const [input, setInput] = useState("");
-  const [selectedDate, setSelectedDate] = useState(() =>
-    new Date().toISOString().split("T")[0]
-  );
+  const [selectedDate, setSelectedDate] = useState("");
   const [userIp, setUserIp] = useState(null);
 
+  useEffect(() => {
+    // 로컬 시간대 기준으로 오늘 날짜 설정
+    const today = new Date().toLocaleDateString('en-CA'); // 'en-CA'는 YYYY-MM-DD 형식
+    setSelectedDate(today);
+  }, []);
+  
   // 사용자의 IP 가져오기
   useEffect(() => {
     fetch("https://api64.ipify.org?format=json")
       .then((res) => res.json())
       .then((data) => {
-        setUserIp(data.ip);
+        setUserIp(data.ip); // IP 주소 설정
       })
       .catch((err) => console.error("IP 가져오기 실패:", err));
   }, []);
@@ -28,7 +32,7 @@ function App() {
 
   // 로컬스토리지에 저장
   useEffect(() => {
-    if (userIp) {
+    if (userIp && todos) {
       localStorage.setItem(`todos_${userIp}`, JSON.stringify(todos));
     }
   }, [todos, userIp]);
@@ -62,6 +66,7 @@ function App() {
       </label>
       <br />
       <input className="inputList"  type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="내용을 입력해주세요.." />
+
       <button className="addBtn" onClick={addTodo}>+</button>
       <ul className="listAll">
         {(todos[selectedDate] || []).map((todo, index) => (
@@ -73,7 +78,6 @@ function App() {
           </li>
         ))}
       </ul>
-
       <div className="ip_address">{userIp ? <p>현재 IP: {userIp}</p> : <p>IP 가져오는 중...</p>}</div>
     </div>
   );
