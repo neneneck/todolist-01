@@ -58,23 +58,23 @@ function App() {
     <div className="App">
       <h1><i>📋</i> To-Do List</h1>
       <label for="datePicker" >
-        <input class="dateCheck" id="datePicker" type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+        <input className="dateCheck" id="datePicker" type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
       </label>
       <br />
-      <input class="inputList"  type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="내용을 입력해주세요.." />
-      <button class="addBtn" onClick={addTodo}>+</button>
-      <ul class="listAll">
+      <input className="inputList"  type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="내용을 입력해주세요.." />
+      <button className="addBtn" onClick={addTodo}>+</button>
+      <ul className="listAll">
         {(todos[selectedDate] || []).map((todo, index) => (
           <li key={index}>
               <input id="custom-checkbox" class="checkIcon custom-checkbox" type="checkbox" checked={todo.completed} onChange={() => toggleTodo(index)} />
-              <b class="checkmark"></b>
+              <b className="checkmark"></b>
               <span style={{ textDecoration: todo.completed ? "line-through" : "none" }}>{todo.text}</span>
-            <button class="subtractBtn"  onClick={() => deleteTodo(index)}>-</button>
+            <button className="subtractBtn"  onClick={() => deleteTodo(index)}>-</button>
           </li>
         ))}
       </ul>
 
-      <div class="ip_address">{userIp ? <p>현재 IP: {userIp}</p> : <p>IP 가져오는 중...</p>}</div>
+      <div className="ip_address">{userIp ? <p>현재 IP: {userIp}</p> : <p>IP 가져오는 중...</p>}</div>
     </div>
   );
 }
