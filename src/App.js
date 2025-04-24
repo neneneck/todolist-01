@@ -61,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <h1><i>📋</i> To-Do List</h1>
-      <label for="datePicker" >
+      <label htmlFor="datePicker" >
         <input className="dateCheck" id="datePicker" type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
       </label>
       <br />
